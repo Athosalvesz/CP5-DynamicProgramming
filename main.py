@@ -3,10 +3,7 @@ import sys
 INF = float('inf')
 
 def qtdeMoedas(M, moedas):
-    """
-    Abordagem Gulosa: Tenta formar M usando sempre a maior moeda possível.
-    Não garante a solução ótima.
-    """
+
 
     moedas_ordenadas = sorted(moedas, reverse=True)
     
@@ -22,8 +19,7 @@ def qtdeMoedas(M, moedas):
     return qtde
 
 
-def _qtdeMoedasRec_helper(M, moedas):
-    """Função auxiliar recursiva pura."""
+def _qtdeMoedasRec_helper(M, moedas)
   
     if M == 0:
         return 0
@@ -45,18 +41,13 @@ def _qtdeMoedasRec_helper(M, moedas):
     return min_necessario
 
 def qtdeMoedasRec(M, moedas):
-    """
-    Wrapper da função recursiva pura para tratar o retorno -1.
-    """
+
     resultado = _qtdeMoedasRec_helper(M, moedas)
     
  
     return -1 if resultado == INF else int(resultado)
 
-
-
 def _qtdeMoedasRecMemo_helper(M, moedas, memo):
-    """Função auxiliar Top-Down com memoização."""
 
     if M == 0:
         return 0
@@ -80,9 +71,7 @@ def _qtdeMoedasRecMemo_helper(M, moedas, memo):
     return min_necessario
 
 def qtdeMoedasRecMemo(M, moedas):
-    """
-    Wrapper da função Top-Down para iniciar o memo e tratar o -1.
-    """
+
     memo = {} 
     resultado = _qtdeMoedasRecMemo_helper(M, moedas, memo)
     
@@ -90,9 +79,7 @@ def qtdeMoedasRecMemo(M, moedas):
 
 
 def qtdeMoedasPD(M, moedas):
-    """
-    Solução ótima com PD Bottom-Up.
-    """
+
  
     dp = [INF] * (M + 1)
     
@@ -137,4 +124,5 @@ if __name__ == "__main__":
    
     print(f"Recursiva Pura: {qtdeMoedasRec(M_teste_2, moedas_teste_2)}")
     print(f"Memoization (Top-Down): {qtdeMoedasRecMemo(M_teste_2, moedas_teste_2)}")
+
     print(f"PD (Bottom-Up): {qtdeMoedasPD(M_teste_2, moedas_teste_2)}")
